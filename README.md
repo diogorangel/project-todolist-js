@@ -2,7 +2,7 @@
 # Author : Diogo Rangel Dos Santos
 A simple, interactive web application created as part of my project. This project demonstrates the fundamental "Separation of Concerns" in web development by splitting structure (HTML), style (CSS), and behavior (JavaScript) into distinct files.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.loom.com/share/46ecf02fe2614bcaae7d456863b83f2f)
 
 # Development Environment
 
@@ -19,4 +19,4 @@ HTML, CSS and JAVASCRIPT
 # Useful Websites
 
 {Websites for help}
-* [Project Live](http://url.link.goes.here)
+* [Project Live](https://diogorangel.github.io/hello-interactive-js/hello.html)
