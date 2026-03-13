@@ -1,4 +1,10 @@
-// 1. Get references to the HTML elements
+/**
+ * Global state management
+ * Requirement: Use a data structure (Array of Objects)
+ */
+const taskState = []; // Data Structure: Array 
+
+// References to DOM elements
 const cardNameInput = document.getElementById('cardName');
 const assigneeInput = document.getElementById('assignee');
 const creatorInput = document.getElementById('creator');
@@ -8,76 +14,86 @@ const addButton = document.getElementById('addButton');
 const cardContainer = document.getElementById('cardContainer');
 
 /**
- * Helper function to create the card element
- * This follows modular programming best practices.
+ * Renders all cards from the taskState array to the DOM.
+ * Requirement: Loops (for-each) and Functions 
  */
-const createCardElement = (data) => {
-    const card = document.createElement('div');
-    card.className = 'task-card';
+function renderCards() {
+    cardContainer.innerHTML = ''; // Clear current view
 
-    // Build the internal structure using template literals
-    card.innerHTML = `
-        <h3>${data.name}</h3>
-        <p><strong>Due Date:</strong> ${data.date ? data.date : 'No date set'}</p>
-        <p><strong>Assignee:</strong> ${data.assignee}</p>
-        <p><strong>Creator:</strong> ${data.creator}</p>
-        <p><strong>Description:</strong> ${data.desc}</p>
-        <button class="delete-btn">Remove Card</button>
-    `;
+    // Loop through the data structure to build the UI 
+    taskState.forEach((task, index) => {
+        const card = document.createElement('div');
+        card.className = `task-card ${task.completed ? 'completed' : ''}`;
 
-    // Toggle completed status when the card (not the button) is clicked
-    card.addEventListener('click', (e) => {
-        if (e.target.tagName !== 'BUTTON') {
-            card.classList.toggle('completed');
-        }
+        card.innerHTML = `
+            <h3>${task.name}</h3>
+            <p><strong>Due Date:</strong> ${task.date || 'No date set'}</p>
+            <p><strong>Assignee:</strong> ${task.assignee}</p>
+            <p><strong>Creator:</strong> ${task.creator}</p>
+            <p><strong>Description:</strong> ${task.desc}</p>
+            <button onclick="removeTask(${index})" class="delete-btn">Remove Card</button>
+        `;
+
+        // Conditional logic for completion 
+        card.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON') {
+                toggleComplete(index);
+            }
+        });
+
+        cardContainer.appendChild(card);
     });
-
-    // Add delete functionality to the button
-    card.querySelector('.delete-btn').addEventListener('click', () => {
-        card.remove();
-    });
-
-    return card;
-};
+}
 
 /**
- * Main function to handle adding a new task
- * Requirement: Create software to demonstrate what was learned [cite: 6]
+ * Adds a new task object to the state array.
+ * Requirement: Variables (mutable/immutable) and Expressions 
  */
-const addTask = () => {
-    // Capture data from the 5 fields
-    const taskData = {
-        name: cardNameInput.value.trim(),
-        assignee: assigneeInput.value.trim(),
-        creator: creatorInput.value.trim(),
-        date: taskDateInput.value,
-        desc: descriptionInput.value.trim()
-    };
-
-    // Validation: Require at least a Task Name
-    if (taskData.name === "") {
-        alert("Please enter at least a Task Name!");
+function addTask() {
+    const name = cardNameInput.value.trim(); // Immutable constant 
+    
+    // Conditional validation 
+    if (name === "") {
+        alert("Task name is required!");
         return;
     }
 
-    // Create the card and add it to the page
-    const newCard = createCardElement(taskData);
-    cardContainer.appendChild(newCard);
+    const newTask = {
+        name: name,
+        assignee: assigneeInput.value.trim(),
+        creator: creatorInput.value.trim(),
+        date: taskDateInput.value,
+        desc: descriptionInput.value.trim(),
+        completed: false
+    };
 
-    // Clear all inputs for the next task
-    [cardNameInput, assigneeInput, creatorInput, taskDateInput, descriptionInput].forEach(input => input.value = "");
-    
-    console.log("Task added successfully."); // Useful for debugging
-};
+    taskState.push(newTask); // Update data structure 
+    clearInputs();
+    renderCards();
+}
 
-// 2. Add event listener to the add button
+/**
+ * Toggles the completion status of a task.
+ */
+function toggleComplete(index) {
+    taskState[index].completed = !taskState[index].completed;
+    renderCards();
+}
+
+/**
+ * Removes a task from the state array.
+ */
+function removeTask(index) {
+    taskState.splice(index, 1); // Mutate data structure 
+    renderCards();
+}
+
+/**
+ * Clears form fields after submission.
+ */
+function clearInputs() {
+    [cardNameInput, assigneeInput, creatorInput, taskDateInput, descriptionInput].forEach(i => i.value = "");
+}
+
+// Event Listeners
 addButton.addEventListener('click', addTask);
-
-// 3. Bonus: Allow adding with the Enter key from any field
-[cardNameInput, assigneeInput, creatorInput, descriptionInput].forEach(field => {
-    field.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-            addTask();
-        }
-    });
-});
