@@ -1,10 +1,82 @@
 body {
-    font-family: sans-serif;
-    text-align: center;
-    margin-top: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-#main-title {
+.container {
+    max-width: 600px; /* Slightly wider for the two-column grid */
+    width: 100%;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* THE GRID FIX */
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates two equal columns */
+    gap: 15px; /* Adds consistent spacing between all fields */
+    margin-bottom: 20px;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; /* Crucial for alignment */
+    font-size: 14px;
+}
+
+/* Make the Description take up both columns */
+.input-group textarea {
+    grid-column: span 2;
+    height: 80px;
+    resize: none;
+}
+
+/* Button Styling */
+button#addButton {
+    grid-column: span 2; /* Button also takes full width */
+    padding: 14px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
     cursor: pointer;
-    transition: color 0.3s ease; 
+    transition: background 0.3s ease;
+}
+
+button#addButton:hover {
+    background-color: #218838;
+}
+
+/* Card Styling */
+.task-card {
+    background: #ffffff;
+    border-left: 5px solid #007bff;
+    border: 1px solid #e1e4e8;
+    border-left: 5px solid #007bff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.completed {
+    border-left-color: #28a745;
+    background-color: #f8fff9;
 }
