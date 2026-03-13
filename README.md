@@ -7,7 +7,7 @@ This application is a simple, browser-based Task Manager. It allows users to inp
 
 ## Software Demo Video
 * [Link to your YouTube/Loom video here](https://www.loom.com/share/cd1f96d98c51470e82a097d38285f973)
-* [Link of website live](https://diogorangel.github.io/project-todolist-js/Todolist.html/)
+* [Link of website live](https://diogorangel.github.io/project-todolist-js/Todolist.html)
 
 ## Development Environment
 * Language: JavaScript (Vanilla)
