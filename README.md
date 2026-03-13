@@ -1,7 +1,5 @@
-# Overview
-# CSE 310 - Web-Based To-Do List
+# Overview CSE 310 - Web-Based To-Do List
 
-## Author
 # Author : Diogo Rangel Dos Santos
 
 ## Overview
