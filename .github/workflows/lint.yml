@@ -1,24 +1,31 @@
-name: Code Quality Check
+```yaml
+name: Java CI with Maven
 
-# This action runs every time you push code to GitHub
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
 
-      - name: Run a simple check
-        run: |
-          echo "Analyzing JavaScript for errors..."
-          # This simple command checks if the files exist and are readable
-          ls -R
-          echo "Code quality check passed!"
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: task-manager-app
+        path: target/*.jar

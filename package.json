@@ -1,0 +1,16 @@
+{
+  "name": "project-todolist",
+  "version": "1.0.0",
+  "description": "This application is a simple, browser-based Task Manager. It allows users to input tasks, mark them as finished by clicking the text, and remove them entirely. It was built to demonstrate proficiency in JavaScript DOM manipulation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "sqlite3": "^6.0.1"
+  }
+}
