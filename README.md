@@ -30,8 +30,9 @@ This project is a full-stack Task Management application developed as part of a 
    ./mvnw spring-boot:run
 
 ## Software Demo Video
-* [Link to your YouTube/Loom video here](https://www.loom.com/share/cd1f96d98c51470e82a097d38285f973)
-* [Link of website live](https://diogorangel.github.io/project-todolist-js/Todolist.html)
+* [Link to your YouTube/Loom video here](https://www.loom.com/share/2bbf9d36d42b4200b1aef99093c415ef)
+* [Link of website live](https://diogorangel.github.io/project-todolist-js/src/main/resources/static/Todolist.html)
+* [Local Link](http://localhost:8080/Todolist.html)
 
 ## Development Environment
 * Language: JavaScript (Vanilla)
