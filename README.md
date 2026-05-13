@@ -25,9 +25,13 @@ This project is a full-stack Task Management application developed as part of a 
 ## 📥 How to Run
 1. Ensure you have **JDK 17** and **Maven** installed.
 2. Clone the repository.
-3. Run the application using the Maven Wrapper:
-   ```bash
-   ./mvnw spring-boot:run
+3. Do the follow command with the terminal integrted with project-todolist-js:
+* mvn install
+* npm install
+
+4. Run the application using the Maven Wrapper:
+   mvn spring-boot:run
+Link para abrir o site: http://localhost:8080/Todolist.html
 
 ## Software Demo Video
 * [Link to your YouTube/Loom video here](https://www.loom.com/share/2bbf9d36d42b4200b1aef99093c415ef)
